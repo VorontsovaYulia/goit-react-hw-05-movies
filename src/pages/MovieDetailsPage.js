@@ -4,7 +4,7 @@ import { fetchMoviesById } from "api";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
-    const [ , setLoading] = useState(false);
+    const [, setLoading] = useState(false);
     const { movieId } = useParams();
     
 

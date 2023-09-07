@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
-    const [ , setLoading] = useState(false);
+    const [, setLoading] = useState(false);
 
     useEffect(() => {
         async function getMovies() {
