@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 const MovieDetailsPage = () => {
     return (
         <div>
-            MovieDetailsPage
+            <p>Additional information</p>
             <ul>
                 <li>    
                     <Link to="cast">Cast</Link>

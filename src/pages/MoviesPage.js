@@ -4,8 +4,8 @@ const MoviePage = () => {
     return (
         <>
         <div>
-            MoviePage
-            <input type="text" />
+                <input type="text" />
+                <button typy="button">Search</button>
         </div>
             <Outlet />
             </>
