@@ -4,7 +4,7 @@ import { fetchMovieCast } from "api";
 
 
 const Cast = () => {
-    const [loading, setLoading] = useState(false)
+    const [ , setLoading] = useState(false)
     const [cast, setCast] = useState(null)
     const { movieId } = useParams();
     useEffect(() => {

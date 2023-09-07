@@ -4,7 +4,7 @@ import { fetchMovieReviews } from "api";
 
 
 const Reviews = () => {
-    const [loading, setLoading] = useState(false)
+    const [ , setLoading] = useState(false)
     const [reviews, setReviews] = useState(null)
     const { movieId } = useParams();
     
