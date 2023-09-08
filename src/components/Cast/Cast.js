@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "api";
 import { Card, Image, List, Wrapper } from "./Cast.styled";
-import {avatar} from 'avatar.png'
-
 
 const Cast = () => {
     const [, setLoading] = useState(false)
