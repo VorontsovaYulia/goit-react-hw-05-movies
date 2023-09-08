@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "api";
-import { List, Wrapper } from "./Cast.styled";
+import { Card, Image, List, Wrapper } from "./Cast.styled";
+import {avatar} from 'avatar.png'
 
 
 const Cast = () => {
@@ -27,11 +28,13 @@ const Cast = () => {
     return (
         <Wrapper>
             <List>
-                {cast && cast.map(({name, id, character, profile_path}) => {
+                {cast && cast.map(({ name, id, character, profile_path }) => {
                     return <li key={id}>
-                        <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="100" />
-                        <p>{name}</p>
-                        <p>{character}</p>
+                        <Image src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="140" /> 
+                        <Card>
+                            <h4>{name}</h4>
+                            <p>{character}</p>
+                        </Card>
                     </li>
                 })}
             </List>

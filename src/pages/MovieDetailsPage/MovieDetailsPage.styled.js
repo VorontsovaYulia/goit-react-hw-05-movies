@@ -37,4 +37,5 @@ export const ListStyled = styled.ul`
  display: flex;
  align-items: center;
  gap: 16px;
+ margin-bottom:16px;
 `;

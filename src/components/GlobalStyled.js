@@ -42,4 +42,9 @@ a {
   text-decoration: none;
   text-align: center;
 }
+
+h4,
+p {
+margin: 0px;
+}
 `

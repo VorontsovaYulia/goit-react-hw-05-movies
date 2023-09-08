@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "api";
-import { List } from "./Reviews.styled";
+import { Box, List, Text } from "./Reviews.styled";
 
 
 const Reviews = () => {
@@ -27,10 +27,10 @@ const Reviews = () => {
     return (
         reviews && reviews.length ? (<List>
             {reviews.map(({author, id, content}) => {
-                return <li key={id}>
+                return <Box key={id}>
                     <h4>{author}</h4>
-                    <p>{content}</p>
-                </li>
+                    <Text>{content}</Text>
+                </Box>
             })}
         </List>) : "We don`t have any reviews for this movie"
     );
