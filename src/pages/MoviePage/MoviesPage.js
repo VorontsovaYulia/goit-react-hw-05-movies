@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { InputBox } from "./MoviePage.styled";
 
 const MoviePage = () => {
     return (
         <>
-        <div>
+        <InputBox>
                 <input type="text" />
                 <button typy="button">Search</button>
-        </div>
+        </InputBox>
             <Outlet />
             </>
     );

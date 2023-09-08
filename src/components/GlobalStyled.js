@@ -26,8 +26,8 @@ body {
 
 img {
   display: block;
-  max-width: 100%;
-  height: auto;
+  /* max-width: 100%;
+  height: auto; */
 }
 
 ul,
@@ -36,5 +36,10 @@ a {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
 }
 `
