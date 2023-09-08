@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import { fetchMoviesById } from "api";
 import { Image, ImageBox, List, Wrapper, Link, ListStyled } from "./MovieDetailsPage.styled";
+import { fetchMoviesById } from "api";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);

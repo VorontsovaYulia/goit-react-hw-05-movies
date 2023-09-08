@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const List = styled.ul`
   display: grid;
   justify-content: space-between;
-  grid-template-columns: repeat(auto-fit, 140px);
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, 180px);
+  gap: 12px;
 `; 
 export const Wrapper = styled.div`
  padding: 16px 0;
@@ -23,7 +23,7 @@ export const Card = styled.div`
 export const Image = styled.img`
  border-top-left-radius: 8px;
  border-top-right-radius: 8px;
- width: 140px;
- height: 210px;
+ width: 180px;
+ height: 270px;
  box-shadow: 1px 1px 2px 1px rgb(47 47 52 / 20%)
 `; 

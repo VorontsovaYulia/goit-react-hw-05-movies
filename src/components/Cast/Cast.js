@@ -28,7 +28,7 @@ const Cast = () => {
             <List>
                 {cast && cast.map(({ name, id, character, profile_path }) => {
                     return <li key={id}>
-                        <Image src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="140" /> 
+                        <Image src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="180" /> 
                         <Card>
                             <h4>{name}</h4>
                             <p>{character}</p>
