@@ -25,4 +25,5 @@ export const Image = styled.img`
  border-top-right-radius: 8px;
  width: 140px;
  height: 210px;
+ box-shadow: 1px 1px 2px 1px rgb(47 47 52 / 20%)
 `; 
