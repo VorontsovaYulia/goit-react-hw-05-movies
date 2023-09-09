@@ -3,10 +3,11 @@ import { Image, InputBox, List, Title } from "./MoviePage.styled";
 import { useEffect, useState } from "react";
 import { fetchMovieSearch } from "api";
 import noImage from "../NoImageAvailable.jpg"
+import { ScaleLoader } from "react-spinners";
 
 const MoviePage = () => {
     const [filterMovies, setFilterMovies] = useState([]);
-    const [, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const querySearch = searchParams.get('query') ?? "";
     const location = useLocation();
@@ -42,8 +43,8 @@ const MoviePage = () => {
                     <input type="text" name="query" />
                     <button type="submit">Search</button>
                 </form>
-                
             </InputBox>
+            {loading && <ScaleLoader color="orangered" />}
                 <List>
                     {filterMovies.results && filterMovies.results.map(({ id, title, poster_path }) =>
                         <Link key={id} to={`/movies/${id}`} state={{from: location}}>

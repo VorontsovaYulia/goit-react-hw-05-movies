@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { Image, ImageBox, List, Wrapper, LinkStyled, ListStyled } from "./MovieDetailsPage.styled";
 import { fetchMoviesById } from "api";
+import { ScaleLoader } from "react-spinners";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
-    const [, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
     const location = useLocation();
     
@@ -30,6 +31,7 @@ const MovieDetailsPage = () => {
             <Link to={location.state?.from ?? '/movies'}>
                 GO back
             </Link>
+            {loading && <ScaleLoader color="orangered" />}
             {movieDetails && <>
                 <Wrapper>
                     <ImageBox>

@@ -2,10 +2,11 @@ import { fetchMoviesTrending } from "api";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { List } from "./HomePage.styled";
+import { ScaleLoader } from "react-spinners";
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
-    const [, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -26,6 +27,7 @@ const HomePage = () => {
     return (
         <div>
             <h1>Trending today</h1>
+            {loading && <ScaleLoader color="orangered" />}
             <List>
                 {movies.results && movies.results.map(({ id, title, poster_path }) =>
                     <Link key={id} to={`/movies/${id}`} state={{from: location}}>

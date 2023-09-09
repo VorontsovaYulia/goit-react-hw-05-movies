@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "api";
 import { Card, Image, List, Wrapper } from "./Cast.styled";
-import defaultImg from "../avatar.png"
+import defaultImg from "../avatar.png";
+import { ScaleLoader } from "react-spinners";
 
 const Cast = () => {
-    const [, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [cast, setCast] = useState(null)
     const { movieId } = useParams();
     useEffect(() => {
@@ -25,6 +26,7 @@ const Cast = () => {
 
     return (
         <Wrapper>
+            {loading && <ScaleLoader color="orangered" />}
             <List>
                 {cast && cast.map(({ name, id, character, profile_path }) => {
                     return <li key={id}>
