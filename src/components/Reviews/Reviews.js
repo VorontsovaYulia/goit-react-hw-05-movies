@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovieReviews } from "api";
 import { Box, List, Text } from "./Reviews.styled";
+import { fetchMovieReviews } from "api";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState(null)
@@ -28,7 +28,7 @@ const Reviews = () => {
                     <Text>{content}</Text>
                 </Box>
             })}
-        </List>) : <p>We don`t have any reviews for this movie</p>
+        </List>) : <Text>We don`t have any reviews for this movie</Text>
     );
 };
 

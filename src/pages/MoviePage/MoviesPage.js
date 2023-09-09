@@ -1,9 +1,9 @@
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import { Image, InputBox, List, Title } from "./MoviePage.styled";
 import { useEffect, useState } from "react";
-import { fetchMovieSearch } from "api";
-import noImage from "../NoImageAvailable.jpg"
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import { Btn, Image, InputBox, InputStyled, List } from "./MoviePage.styled";
+import { fetchMovieSearch } from "api";
+import noImage from "../NoImageAvailable.jpg";
 
 const MoviePage = () => {
     const [filterMovies, setFilterMovies] = useState([]);
@@ -40,18 +40,18 @@ const MoviePage = () => {
         <>
             <InputBox>
                 <form onSubmit={updateQueryString}>
-                    <input type="text" name="query" />
-                    <button type="submit">Search</button>
+                    <InputStyled type="text" name="query" />
+                    <Btn type="submit">Search</Btn>
                 </form>
             </InputBox>
             {loading && <ScaleLoader color="orangered" />}
-                <List>
-                    {filterMovies.results && filterMovies.results.map(({ id, title, poster_path }) =>
-                        <Link key={id} to={`/movies/${id}`} state={{from: location}}>
-                            {poster_path !== null ? <Image alt={title} width="100" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} /> : <Image alt={title} width="100" src={noImage} />}
-                            <Title>{title}</Title>
-                        </Link>)}
-                </List>
+            <List>
+                {filterMovies.results && filterMovies.results.map(({ id, title, poster_path }) =>
+                    <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
+                        {poster_path !== null ? <Image alt={title} width="100" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} /> : <Image alt={title} width="100" src={noImage} />}
+                        <h4>{title}</h4>
+                    </Link>)}
+            </List>
         </>
     );
 };

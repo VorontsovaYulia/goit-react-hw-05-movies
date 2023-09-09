@@ -1,16 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { Image, ImageBox, List, Wrapper, LinkStyled, ListStyled } from "./MovieDetailsPage.styled";
-import { fetchMoviesById } from "api";
+import { useEffect, useRef, useState, Suspense } from "react";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
-import { Suspense } from "react";
+import { Image, ImageBox, List, Wrapper, LinkStyled, ListStyled, LinkBtn, Title } from "./MovieDetailsPage.styled";
+import { fetchMoviesById } from "api";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
     const { movieId } = useParams();
     const location = useLocation();
-    const backLinkLocation = useRef(location.state?.from ?? '/movies')
+    const backLinkLocation = useRef(location.state?.from ?? '/movies');
     
 
     useEffect(() => {
@@ -28,21 +27,21 @@ const MovieDetailsPage = () => {
     
     return (
         <div>
-            <Link to={backLinkLocation.current}>
-                <BsArrowLeftSquareFill />GO back
-            </Link>
+            <LinkBtn to={backLinkLocation.current}>
+                <BsArrowLeftSquareFill style={{ color: "orangered" }} /> GO back
+            </LinkBtn>
             {movieDetails && <>
                 <Wrapper>
                     <ImageBox>
                         <Image alt={movieDetails.title} src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} />
                     </ImageBox>
                     <div>
-                    <h1>{movieDetails.title}</h1>
-                    <p>User Scope: {Math.ceil(movieDetails.popularity)}%</p>
-                    <h2>Overview</h2>
-                    <p>{movieDetails.overview}</p>
-                    <h3>Genres</h3>
-                    <List>{movieDetails.genres.map(({ id, name }) => <li key={id}>{name}</li>)}</List>
+                        <Title>{movieDetails.title}</Title>
+                        <p>User Scope: {Math.ceil(movieDetails.popularity)}%</p>
+                        <h2>Overview</h2>
+                        <p>{movieDetails.overview}</p>
+                        <h3>Genres</h3>
+                        <List>{movieDetails.genres.map(({ id, name }) => <li key={id}>{name}</li>)}</List>
                     </div>
                 </Wrapper>
                 <h3>Additional information</h3>
@@ -58,11 +57,7 @@ const MovieDetailsPage = () => {
                 <Suspense fallback={<ScaleLoader color="orangered" />}>
                     <Outlet />
                 </Suspense>
-                
-            </>
-        }
-
-            
+            </>}
         </div>
     );
 };

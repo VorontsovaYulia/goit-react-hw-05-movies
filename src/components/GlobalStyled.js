@@ -41,6 +41,7 @@ a {
   text-align: center;
 }
 
+h1,
 h4,
 p {
 margin: 0px;

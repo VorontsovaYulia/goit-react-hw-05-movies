@@ -13,6 +13,7 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 12px;
   padding: 16px 0;
+  margin-bottom: 16px;
   border-bottom: 1px solid black;
   `;
 
@@ -22,7 +23,7 @@ export const List = styled.ul`
   justify-content: space-between;
   gap: 12px;
   `;
-
+  
 export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;

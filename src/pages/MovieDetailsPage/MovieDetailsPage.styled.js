@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const ImageBox = styled.div`
  display: inline-block;
-`
+`;
+
 export const Wrapper = styled.div`
  display: flex;
  align-items: center;
@@ -11,19 +12,22 @@ export const Wrapper = styled.div`
  padding-bottom: 16px;
  padding-top: 16px;
  border-bottom: 1px solid black;
-`
+`;
+
 export const Image = styled.img`
  width: 220px;
  height: auto;
-`
+`;
+
 export const List = styled.ul`
  display: flex;
  align-items: center;
  gap: 8px;
-`
+`;
+
 export const LinkStyled = styled(NavLink)`
-  padding: 4px 8px;
-  border-radius: 4px;
+ padding: 4px 8px;
+ border-radius: 4px;
  text-decoration: none;
  color: black;
  font-weight: 500;
@@ -32,7 +36,20 @@ export const LinkStyled = styled(NavLink)`
   color: white;
   background-color: orangered;
  }
-  `
+`;
+
+export const LinkBtn = styled(Link)`
+ color: black;
+ font-weight: 500;
+ display: flex;
+ align-items: center;
+ gap: 4px;
+`;
+
+export const Title = styled.h1`
+margin-bottom: 16px;
+`;
+
 export const ListStyled = styled.ul`
  display: flex;
  align-items: center;

@@ -1,8 +1,8 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 import { GlobalStyle } from "../GlobalStyled";
 import { Container, Header, List, Link } from "./Layout.styled";
-import { Suspense } from "react";
-import { ScaleLoader } from "react-spinners";
 
 const Layout = () => {
     return (
