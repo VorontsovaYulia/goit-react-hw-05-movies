@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "api";
 import { Card, Image, List, Wrapper } from "./Cast.styled";
+import defaultImg from "../avatar.png"
 
 const Cast = () => {
     const [, setLoading] = useState(false)
@@ -28,7 +29,7 @@ const Cast = () => {
             <List>
                 {cast && cast.map(({ name, id, character, profile_path }) => {
                     return <li key={id}>
-                        <Image src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="180" /> 
+                        {profile_path !== null ? <Image src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} width="180" /> : <Image src={defaultImg} alt={name} width="180"/>} 
                         <Card>
                             <h4>{name}</h4>
                             <p>{character}</p>
