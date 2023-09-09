@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { GlobalStyle } from "../GlobalStyled";
 import { Container, Header, List, Link } from "./Layout.styled";
+import { Suspense } from "react";
+import { ScaleLoader } from "react-spinners";
 
 const Layout = () => {
     return (
@@ -18,7 +20,9 @@ const Layout = () => {
                 </nav>
             </Header>
             <main>
-                <Outlet />
+                <Suspense fallback={<ScaleLoader color="orangered" />}>
+                     <Outlet />
+                </Suspense>
                 <GlobalStyle />
             </main>
         </Container>

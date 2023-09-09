@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { Image, ImageBox, List, Wrapper, LinkStyled, ListStyled } from "./MovieDetailsPage.styled";
 import { fetchMoviesById } from "api";
 import { ScaleLoader } from "react-spinners";
+import { BsArrowLeftSquareFill } from "react-icons/bs";
+import { Suspense } from "react";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
-    const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
     const location = useLocation();
+    const backLinkLocation = useRef(location.state?.from ?? '/movies')
     
 
     useEffect(() => {
+        if (!movieId) return;
         async function getMovieId() {
             try {
-                setLoading(true);
                 const movie = await fetchMoviesById(movieId);
                 setMovieDetails(movie);
             } catch (error) {
                 console.log(error)
-            } finally {
-                setLoading(false);
             }
         };
         getMovieId();
@@ -28,10 +28,9 @@ const MovieDetailsPage = () => {
     
     return (
         <div>
-            <Link to={location.state?.from ?? '/movies'}>
-                GO back
+            <Link to={backLinkLocation.current}>
+                <BsArrowLeftSquareFill />GO back
             </Link>
-            {loading && <ScaleLoader color="orangered" />}
             {movieDetails && <>
                 <Wrapper>
                     <ImageBox>
@@ -56,7 +55,10 @@ const MovieDetailsPage = () => {
                         <LinkStyled to="reviews">Reviews</LinkStyled>
                     </li>
                 </ListStyled>
-                <Outlet />
+                <Suspense fallback={<ScaleLoader color="orangered" />}>
+                    <Outlet />
+                </Suspense>
+                
             </>
         }
 

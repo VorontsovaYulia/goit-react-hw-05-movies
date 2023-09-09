@@ -15,13 +15,13 @@ const MoviePage = () => {
     useEffect(() => {
         async function getMoviesSearch() {
             try {
-                setLoading(true);
+                setLoading(true)
                 const movies = await fetchMovieSearch(querySearch);
                 setFilterMovies(movies);
             } catch (error) {
                 console.log(error)
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         };
         getMoviesSearch();
