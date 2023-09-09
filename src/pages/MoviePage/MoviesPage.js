@@ -17,6 +17,7 @@ const MoviePage = () => {
     const location = useLocation();
 
     useEffect(() => {
+        if (querySearch === "") return;
         async function getMoviesSearch() {
             try {
                 setLoading(true)
