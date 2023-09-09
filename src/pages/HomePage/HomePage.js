@@ -1,11 +1,12 @@
 import { fetchMoviesTrending } from "api";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { List } from "./HomePage.styled";
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
     const [, setLoading] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         async function getMovies() {
@@ -13,7 +14,6 @@ const HomePage = () => {
                 setLoading(true);
                 const popularMovies = await fetchMoviesTrending();
                 setMovies(popularMovies);
-                console.log(popularMovies)
             } catch (error) {
                 console.log(error)
             } finally {
@@ -28,7 +28,7 @@ const HomePage = () => {
             <h1>Trending today</h1>
             <List>
                 {movies.results && movies.results.map(({ id, title, poster_path }) =>
-                    <Link key={id} to={`/movies/${id}`}>
+                    <Link key={id} to={`/movies/${id}`} state={{from: location}}>
                     <img alt={title} width="200" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
                     <h3>{title}</h3>
                 </Link>)}

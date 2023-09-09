@@ -21,7 +21,7 @@ export const List = styled.ul`
  align-items: center;
  gap: 8px;
 `
-export const Link = styled(NavLink)`
+export const LinkStyled = styled(NavLink)`
   padding: 4px 8px;
   border-radius: 4px;
  text-decoration: none;

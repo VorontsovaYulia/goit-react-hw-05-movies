@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import { Image, ImageBox, List, Wrapper, Link, ListStyled } from "./MovieDetailsPage.styled";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Image, ImageBox, List, Wrapper, LinkStyled, ListStyled } from "./MovieDetailsPage.styled";
 import { fetchMoviesById } from "api";
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState(null);
     const [, setLoading] = useState(false);
     const { movieId } = useParams();
+    const location = useLocation();
     
 
     useEffect(() => {
@@ -25,8 +26,11 @@ const MovieDetailsPage = () => {
     }, [movieId]);
     
     return (
-        <div>{
-            movieDetails && <>
+        <div>
+            <Link to={location.state?.from ?? '/movies'}>
+                GO back
+            </Link>
+            {movieDetails && <>
                 <Wrapper>
                     <ImageBox>
                         <Image alt={movieDetails.title} src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} />
@@ -44,10 +48,10 @@ const MovieDetailsPage = () => {
 
                 <ListStyled>
                     <li>
-                        <Link to="cast">Cast</Link>
+                        <LinkStyled to="cast">Cast</LinkStyled>
                     </li>
                     <li>
-                        <Link to="reviews">Reviews</Link>
+                        <LinkStyled to="reviews">Reviews</LinkStyled>
                     </li>
                 </ListStyled>
                 <Outlet />
