@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import toast, { Toaster } from 'react-hot-toast';
 import { Btn, Image, InputBox, InputStyled, List } from "./MoviePage.styled";
 import { fetchMovieSearch } from "api";
 import noImage from "../NoImageAvailable.jpg";
+
+const notifyNoQuery = () => toast.error("Please, enter your query");
+const notifyNoMovies = () => toast.error("Nothing found for your request :(");
 
 const MoviePage = () => {
     const [filterMovies, setFilterMovies] = useState([]);
@@ -18,6 +22,7 @@ const MoviePage = () => {
                 setLoading(true)
                 const movies = await fetchMovieSearch(querySearch);
                 setFilterMovies(movies);
+                if (!movies.results.length) notifyNoMovies();
             } catch (error) {
                 console.log(error)
             } finally {
@@ -30,7 +35,7 @@ const MoviePage = () => {
     const updateQueryString = (evt) => {
         evt.preventDefault();
         const searchQuery = evt.target.elements.query.value;
-        if (!searchQuery) return;
+        if (!searchQuery) return notifyNoQuery();
         const nextParams = searchQuery !== "" ? { query: searchQuery } : {};
         setSearchParams(nextParams);
         evt.target.reset();
@@ -52,6 +57,7 @@ const MoviePage = () => {
                         <h4>{title}</h4>
                     </Link>)}
             </List>
+            <Toaster position="top-right"/>
         </>
     );
 };
