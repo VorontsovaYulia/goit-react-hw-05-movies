@@ -21,7 +21,7 @@ const Layout = () => {
             </Header>
             <main>
                 <Suspense fallback={<ScaleLoader color="orangered" />}>
-                     <Outlet />
+                    <Outlet />
                 </Suspense>
                 <GlobalStyle />
             </main>

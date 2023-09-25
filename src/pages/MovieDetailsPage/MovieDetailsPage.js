@@ -11,7 +11,6 @@ const MovieDetailsPage = () => {
     const location = useLocation();
     const backLinkLocation = useRef(location.state?.from ?? '/movies');
     
-
     useEffect(() => {
         if (!movieId) return;
         async function getMovieId() {
@@ -19,7 +18,7 @@ const MovieDetailsPage = () => {
                 const movie = await fetchMoviesById(movieId);
                 setMovieDetails(movie);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         };
         getMovieId();
@@ -37,7 +36,7 @@ const MovieDetailsPage = () => {
                     </ImageBox>
                     <div>
                         <Title>{movieDetails.title}</Title>
-                        <p>User Scope: {Math.ceil(movieDetails.popularity)}%</p>
+                        <p>User Scope: {Math.round(movieDetails.vote_average * 100) / 100}</p>
                         <h2>Overview</h2>
                         <p>{movieDetails.overview}</p>
                         <h3>Genres</h3>

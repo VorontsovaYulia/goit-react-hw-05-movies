@@ -20,14 +20,14 @@ const MoviePage = () => {
         if (querySearch === "") return;
         async function getMoviesSearch() {
             try {
-                setLoading(true)
+                setLoading(true);
                 const movies = await fetchMovieSearch(querySearch);
                 setFilterMovies(movies);
                 if (!movies.results.length) notifyNoMovies();
             } catch (error) {
-                console.log(error)
+                console.log(error);
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
         };
         getMoviesSearch();
@@ -54,11 +54,11 @@ const MoviePage = () => {
             <List>
                 {filterMovies.results && filterMovies.results.map(({ id, title, poster_path }) =>
                     <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
-                        {poster_path !== null ? <Image alt={title} width="100" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} /> : <Image alt={title} width="100" src={noImage} />}
+                        {poster_path !== null ? <Image alt={title} width="200" height="300" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} /> : <Image alt={title} width="200" height="300" src={noImage} />}
                         <h4>{title}</h4>
                     </Link>)}
             </List>
-            <Toaster position="top-right"/>
+            <Toaster position="top-right" />
         </>
     );
 };

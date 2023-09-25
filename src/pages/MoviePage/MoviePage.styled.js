@@ -15,14 +15,12 @@ export const Btn = styled.button`
 `;
 
 export const List = styled.ul`
- display: flex;
- flex-direction: column;
- align-items: flex-start;
+ display: grid;
+ justify-content: space-between;
+ grid-template-columns: repeat(auto-fit, 200px);
  gap: 16px;
 `;
 
 export const Image = styled.img`
- width: 100;
- height: 150px;
  margin-bottom: 8px;
 `;

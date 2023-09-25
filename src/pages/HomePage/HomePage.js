@@ -13,7 +13,7 @@ const HomePage = () => {
                 const popularMovies = await fetchMoviesTrending();
                 setMovies(popularMovies);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         };
         getMovies();
@@ -25,7 +25,7 @@ const HomePage = () => {
             <List>
                 {movies.results && movies.results.map(({ id, title, poster_path }) =>
                     <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
-                        <img alt={title} width="200" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
+                        <img alt={title} width="200" height="300" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
                         <h3>{title}</h3>
                     </Link>)}
             </List>
